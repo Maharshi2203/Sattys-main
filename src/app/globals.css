@@ -1,0 +1,269 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-nunito), sans-serif;
+  --font-display: var(--font-nunito), sans-serif;
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: #FFEFEC;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #C8102B;
+  --primary-foreground: #ffffff;
+  --secondary: #fce4e1;
+  --secondary-foreground: #1a1a1a;
+  --muted: #f5f3ef;
+  --muted-foreground: #6b6b6b;
+  --accent: #C8102B;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --border: #e5e2dc;
+  --input: #e5e2dc;
+  --ring: #C8102B;
+  --chart-1: #C8102B;
+  --chart-2: #fce4e1;
+  --chart-3: #8b1e2b;
+  --chart-4: #e57373;
+  --chart-5: #ffcdd2;
+  --sidebar: #C8102B;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #ffffff;
+  --sidebar-primary-foreground: #C8102B;
+  --sidebar-accent: #b00d26;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #b00d26;
+  --sidebar-ring: #ffffff;
+}
+
+.dark {
+  --background: #1a0505;
+  /* Very Dark Maroon */
+  --foreground: #ffffff;
+  --card: #2d0404;
+  --card-foreground: #ffffff;
+  --popover: #2d0404;
+  --popover-foreground: #ffffff;
+  --primary: #C8102B;
+  /* Logo color remains as Primary/Action color */
+  --primary-foreground: #ffffff;
+  --secondary: #ffffff;
+  /* White as secondary accent */
+  --secondary-foreground: #1a0505;
+  --muted: #3d0606;
+  --muted-foreground: #d1d1d1;
+  --accent: #C8102B;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --border: #4d0808;
+  --input: #4d0808;
+  --ring: #C8102B;
+  --chart-1: #C8102B;
+  --chart-2: #ffffff;
+  --chart-3: #8b1e2b;
+  --chart-4: #e57373;
+  --chart-5: #ffcdd2;
+  --sidebar: #2d0404;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #C8102B;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #3d0606;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #4d0808;
+  --sidebar-ring: #C8102B;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Video Protection */
+  video {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+    /* Only if videos are background-only */
+  }
+
+  video::-webkit-media-controls-enclosure {
+    display: none !important;
+  }
+}
+
+.font-display {
+  font-family: var(--font-nunito), sans-serif;
+  font-variant-numeric: lining-nums tabular-nums;
+  -moz-font-feature-settings: "lnum" 1, "tnum" 1;
+  -webkit-font-feature-settings: "lnum" 1, "tnum" 1;
+  font-feature-settings: "lnum" 1, "tnum" 1;
+}
+
+/* Global Price Alignment Fix */
+.price-lining,
+[class*="price"],
+.font-display {
+  font-variant-numeric: lining-nums tabular-nums !important;
+  font-feature-settings: "lnum" 1, "tnum" 1 !important;
+}
+
+.font-pacifico {
+  font-family: var(--font-pacifico), cursive;
+}
+
+.font-sans {
+  font-family: var(--font-sans), sans-serif;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes videoZoom {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-video-zoom {
+  animation: videoZoom 20s ease-in-out infinite alternate;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 1000;
+  }
+}
+
+.animate-dash {
+  stroke-dasharray: 10;
+  animation: dash 30s linear infinite;
+}
+
+/* Production-Ready Form Architecture */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: flex-end;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .form-row {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+  /* Essential for grid children truncation */
+}
+
+.truncate-select-value {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
