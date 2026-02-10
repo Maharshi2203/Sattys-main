@@ -30,9 +30,7 @@ export async function PUT(
 ) {
   try {
     const token = req.cookies.get('admin_token')?.value
-    const verifiedUser = token ? await verifyToken(token) : null
-
-    if (!verifiedUser) {
+    if (!token || !verifyToken(token)) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
@@ -114,9 +112,7 @@ export async function DELETE(
 ) {
   try {
     const token = req.cookies.get('admin_token')?.value
-    const verifiedUser = token ? await verifyToken(token) : null
-
-    if (!verifiedUser) {
+    if (!token || !verifyToken(token)) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 

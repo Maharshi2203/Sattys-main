@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
   }
 
-  const payload = await verifyToken(token)
+  const payload = verifyToken(token)
   if (!payload) {
     return NextResponse.json({ error: 'Invalid token' }, { status: 401 })
   }

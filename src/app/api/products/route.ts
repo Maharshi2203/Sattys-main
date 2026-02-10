@@ -59,8 +59,7 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const token = req.cookies.get('admin_token')?.value
-    const verifiedUser = token ? await verifyToken(token) : null
-    if (!verifiedUser) {
+    if (!token || !verifyToken(token)) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
