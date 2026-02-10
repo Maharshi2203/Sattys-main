@@ -104,130 +104,130 @@ function ProductsContent() {
     <div className="min-h-screen flex flex-col bg-[#FFEFEC] text-[#1a1a1a] selection:bg-primary/10">
       <Header />
 
-        <main className="flex-1">
-          <section className="relative h-[40vh] sm:h-[50vh] lg:h-[60vh] min-h-[300px] sm:min-h-[400px] lg:min-h-[500px] w-full overflow-hidden flex items-center justify-center">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                controlsList="nodownload"
-                disablePictureInPicture
-                onContextMenu={(e) => e.preventDefault()}
-                className="absolute top-0 left-0 w-full h-full object-cover z-0"
-              >
-                <source src="https://res.cloudinary.com/dsxes4hgu/video/upload/v1769956658/Untitled_design_2_zmezab.mp4" type="video/mp4" />
-              </video>
+      <main className="flex-1">
+        <section className="relative h-[40vh] sm:h-[50vh] lg:h-[60vh] min-h-[300px] sm:min-h-[400px] lg:min-h-[500px] w-full overflow-hidden flex items-center justify-center">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            controlsList="nodownload"
+            disablePictureInPicture
+            onContextMenu={(e) => e.preventDefault()}
+            className="absolute top-0 left-0 w-full h-full object-cover z-0"
+          >
+            <source src="/video.mp4" type="video/mp4" />
+          </video>
 
-            <div className="absolute inset-0 bg-black/50 z-10" />
+          <div className="absolute inset-0 bg-black/50 z-10" />
 
-            <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 text-center pt-16 sm:pt-24 lg:pt-32">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: "easeOut" }}
-                className="space-y-3 sm:space-y-6"
-              >
-                <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-8xl font-display font-bold text-white tracking-tight drop-shadow-2xl">
-                  Explore Excellence
-                </h1>
-                <p className="text-sm sm:text-lg lg:text-xl xl:text-2xl text-white/90 leading-relaxed font-medium max-w-3xl mx-auto drop-shadow-lg px-2">
-                  Discover our curated selection of premium products, where quality meets craftsmanship in every detail.
-                </p>
+          <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 text-center pt-16 sm:pt-24 lg:pt-32">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="space-y-3 sm:space-y-6"
+            >
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-8xl font-display font-bold text-white tracking-tight drop-shadow-2xl">
+                Explore Excellence
+              </h1>
+              <p className="text-sm sm:text-lg lg:text-xl xl:text-2xl text-white/90 leading-relaxed font-medium max-w-3xl mx-auto drop-shadow-lg px-2">
+                Discover our curated selection of premium products, where quality meets craftsmanship in every detail.
+              </p>
 
-                <div className="pt-4 sm:pt-8">
-                  <div className="inline-block px-4 sm:px-6 py-1.5 sm:py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs sm:text-sm font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em]">
-                    Premium Collection
-                  </div>
+              <div className="pt-4 sm:pt-8">
+                <div className="inline-block px-4 sm:px-6 py-1.5 sm:py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs sm:text-sm font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em]">
+                  Premium Collection
                 </div>
-              </motion.div>
-            </div>
-          </section>
+              </div>
+            </motion.div>
+          </div>
+        </section>
 
-          <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-12 relative z-20">
-            <div className="flex flex-col lg:flex-row gap-6 lg:gap-12">
-              <aside className="w-full lg:w-80 flex-shrink-0">
-                <div className="lg:sticky lg:top-28">
-                  <div className="flex items-center justify-between mb-4 lg:mb-8 px-1 lg:px-2">
-                    <h2 className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-[#1a1a1a]">Filters</h2>
-                    <Button
-                      variant="link"
-                      size="sm"
-                      onClick={clearFilters}
-                      className="text-primary hover:text-primary/80 font-bold p-0 text-sm"
-                    >
-                      Reset All
-                    </Button>
-                  </div>
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-12 relative z-20">
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-12">
+            <aside className="w-full lg:w-80 flex-shrink-0">
+              <div className="lg:sticky lg:top-28">
+                <div className="flex items-center justify-between mb-4 lg:mb-8 px-1 lg:px-2">
+                  <h2 className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-[#1a1a1a]">Filters</h2>
+                  <Button
+                    variant="link"
+                    size="sm"
+                    onClick={clearFilters}
+                    className="text-primary hover:text-primary/80 font-bold p-0 text-sm"
+                  >
+                    Reset All
+                  </Button>
+                </div>
 
-                  <div className="space-y-4 lg:space-y-8 bg-white/60 backdrop-blur-3xl border border-black/5 rounded-2xl lg:rounded-[2.5rem] p-4 sm:p-6 lg:p-8 shadow-[0_20px_80px_-20px_rgba(200,16,43,0.08)] ring-1 ring-black/5">
-                    <form onSubmit={handleSearchSubmit} className="space-y-2 lg:space-y-3">
-                      <Label className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] font-black text-black/40">Search</Label>
-                      <div className="relative">
-                        <Search className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-black/30" />
-                        <Input
-                          placeholder="What are you looking for?"
-                          value={search}
-                          onChange={(e) => setSearch(e.target.value)}
-                          className="pl-10 sm:pl-12 h-11 sm:h-14 bg-white border-black/5 rounded-xl lg:rounded-2xl focus:ring-primary text-black placeholder:text-black/20 text-sm sm:text-base"
-                        />
-                      </div>
-                    </form>
-
-                    <div className="grid grid-cols-2 lg:grid-cols-1 gap-3 lg:gap-4">
-                      <div className="space-y-2 lg:space-y-3">
-                        <Label className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] font-black text-black/40">Category</Label>
-                        <Select value={categoryId} onValueChange={setCategoryId}>
-                          <SelectTrigger className="h-11 sm:h-14 bg-white border-black/5 rounded-xl lg:rounded-2xl text-black text-sm">
-                            <SelectValue placeholder="All Collections" />
-                          </SelectTrigger>
-                          <SelectContent className="rounded-xl lg:rounded-2xl bg-white border-black/5 text-black">
-                            <SelectItem value="all">All Collections</SelectItem>
-                            {categories.map((cat) => (
-                              <SelectItem key={cat.id} value={cat.id.toString()}>{cat.name}</SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-
-                      <div className="space-y-2 lg:space-y-3">
-                        <Label className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] font-black text-black/40">Availability</Label>
-                        <Select value={stockStatus} onValueChange={setStockStatus}>
-                          <SelectTrigger className="h-11 sm:h-14 bg-white border-black/5 rounded-xl lg:rounded-2xl text-black text-sm">
-                            <SelectValue placeholder="Any Status" />
-                          </SelectTrigger>
-                          <SelectContent className="rounded-xl lg:rounded-2xl bg-white border-black/5 text-black">
-                            <SelectItem value="all">Any Status</SelectItem>
-                            <SelectItem value="IN">In Stock</SelectItem>
-                            <SelectItem value="OUT">Out of Stock</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-
-                    <div className="space-y-4 lg:space-y-6 hidden sm:block">
-                      <div className="flex justify-between items-end">
-                        <Label className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] font-black text-black/40">Price Range</Label>
-                        <span className="text-xs sm:text-sm font-bold text-primary">₹ {priceRange[0]} - ₹ {priceRange[1]}</span>
-                      </div>
-                      <Slider
-                        value={priceRange}
-                        onValueChange={(value) => setPriceRange(value as [number, number])}
-                        max={maxPrice}
-                        step={50}
-                        className="py-4"
+                <div className="space-y-4 lg:space-y-8 bg-white/60 backdrop-blur-3xl border border-black/5 rounded-2xl lg:rounded-[2.5rem] p-4 sm:p-6 lg:p-8 shadow-[0_20px_80px_-20px_rgba(200,16,43,0.08)] ring-1 ring-black/5">
+                  <form onSubmit={handleSearchSubmit} className="space-y-2 lg:space-y-3">
+                    <Label className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] font-black text-black/40">Search</Label>
+                    <div className="relative">
+                      <Search className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-black/30" />
+                      <Input
+                        placeholder="What are you looking for?"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        className="pl-10 sm:pl-12 h-11 sm:h-14 bg-white border-black/5 rounded-xl lg:rounded-2xl focus:ring-primary text-black placeholder:text-black/20 text-sm sm:text-base"
                       />
                     </div>
+                  </form>
 
-                    <Button
-                      onClick={applyFilters}
-                      className="w-full h-11 sm:h-14 bg-gradient-to-r from-primary to-[#ff3d5e] hover:to-[#ff1a40] text-white font-bold rounded-xl lg:rounded-2xl shadow-[0_10px_30px_-10px_rgba(200,16,43,0.5)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] border border-white/10 text-sm sm:text-base"
-                    >
-                      Apply Filters
-                    </Button>
+                  <div className="grid grid-cols-2 lg:grid-cols-1 gap-3 lg:gap-4">
+                    <div className="space-y-2 lg:space-y-3">
+                      <Label className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] font-black text-black/40">Category</Label>
+                      <Select value={categoryId} onValueChange={setCategoryId}>
+                        <SelectTrigger className="h-11 sm:h-14 bg-white border-black/5 rounded-xl lg:rounded-2xl text-black text-sm">
+                          <SelectValue placeholder="All Collections" />
+                        </SelectTrigger>
+                        <SelectContent className="rounded-xl lg:rounded-2xl bg-white border-black/5 text-black">
+                          <SelectItem value="all">All Collections</SelectItem>
+                          {categories.map((cat) => (
+                            <SelectItem key={cat.id} value={cat.id.toString()}>{cat.name}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2 lg:space-y-3">
+                      <Label className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] font-black text-black/40">Availability</Label>
+                      <Select value={stockStatus} onValueChange={setStockStatus}>
+                        <SelectTrigger className="h-11 sm:h-14 bg-white border-black/5 rounded-xl lg:rounded-2xl text-black text-sm">
+                          <SelectValue placeholder="Any Status" />
+                        </SelectTrigger>
+                        <SelectContent className="rounded-xl lg:rounded-2xl bg-white border-black/5 text-black">
+                          <SelectItem value="all">Any Status</SelectItem>
+                          <SelectItem value="IN">In Stock</SelectItem>
+                          <SelectItem value="OUT">Out of Stock</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
                   </div>
+
+                  <div className="space-y-4 lg:space-y-6 hidden sm:block">
+                    <div className="flex justify-between items-end">
+                      <Label className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] font-black text-black/40">Price Range</Label>
+                      <span className="text-xs sm:text-sm font-bold text-primary">₹ {priceRange[0]} - ₹ {priceRange[1]}</span>
+                    </div>
+                    <Slider
+                      value={priceRange}
+                      onValueChange={(value) => setPriceRange(value as [number, number])}
+                      max={maxPrice}
+                      step={50}
+                      className="py-4"
+                    />
+                  </div>
+
+                  <Button
+                    onClick={applyFilters}
+                    className="w-full h-11 sm:h-14 bg-gradient-to-r from-primary to-[#ff3d5e] hover:to-[#ff1a40] text-white font-bold rounded-xl lg:rounded-2xl shadow-[0_10px_30px_-10px_rgba(200,16,43,0.5)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] border border-white/10 text-sm sm:text-base"
+                  >
+                    Apply Filters
+                  </Button>
                 </div>
-              </aside>
+              </div>
+            </aside>
 
             <div className="flex-1">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-6 sm:mb-10 pb-4 sm:pb-6 border-b border-white/10">
@@ -247,11 +247,10 @@ function ProductsContent() {
                       variant="ghost"
                       size="icon"
                       onClick={() => setViewMode('grid')}
-                      className={`h-8 w-8 sm:h-10 sm:w-10 rounded-lg sm:rounded-xl transition-all duration-200 ${
-                        viewMode === 'grid'
+                      className={`h-8 w-8 sm:h-10 sm:w-10 rounded-lg sm:rounded-xl transition-all duration-200 ${viewMode === 'grid'
                           ? 'bg-white shadow-sm text-primary'
                           : 'text-black/30 hover:text-black hover:bg-white/50'
-                      }`}
+                        }`}
                     >
                       <LayoutGrid className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </Button>
@@ -259,11 +258,10 @@ function ProductsContent() {
                       variant="ghost"
                       size="icon"
                       onClick={() => setViewMode('list')}
-                      className={`h-8 w-8 sm:h-10 sm:w-10 rounded-lg sm:rounded-xl transition-all duration-200 ${
-                        viewMode === 'list'
+                      className={`h-8 w-8 sm:h-10 sm:w-10 rounded-lg sm:rounded-xl transition-all duration-200 ${viewMode === 'list'
                           ? 'bg-white shadow-sm text-primary'
                           : 'text-black/30 hover:text-black hover:bg-white/50'
-                      }`}
+                        }`}
                     >
                       <List className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </Button>

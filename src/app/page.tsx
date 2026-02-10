@@ -20,7 +20,7 @@ export default function HomePage() {
           onContextMenu={(e) => e.preventDefault()}
           className="absolute top-0 left-0 w-full h-full object-cover z-0 scale-105"
         >
-          <source src="https://res.cloudinary.com/dsxes4hgu/video/upload/v1769956658/Untitled_design_2_zmezab.mp4" type="video/mp4" />
+          <source src="/video.mp4" type="video/mp4" />
         </video>
 
         <div className="absolute inset-0 bg-black/40 z-10" />
