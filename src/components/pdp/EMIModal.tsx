@@ -64,7 +64,7 @@ export function EMIModal({ price }: EMIModalProps) {
                 <div className="mt-8 p-4 bg-muted/40 rounded-2xl flex gap-3 items-start">
                     <Coins className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
                     <p className="text-[10px] text-muted-foreground font-medium leading-relaxed uppercase tracking-widest">
-                        Eligible for No Cost EMI on select credit cards. Charges may apply depending on your provider's terms.
+                        Eligible for No Cost EMI on select credit cards. Charges may apply depending on your provider&apos;s terms.
                     </p>
                 </div>
             </DialogContent>

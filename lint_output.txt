@@ -1,0 +1,503 @@
+﻿node.exe : 
+At D:\Program 
+Files\nodejs\npx.ps1:29 
+char:3
++   & $NODE_EXE $NPX_CLI_JS 
+$args
++   ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo          
+    : NotSpecified: (:Stri  
+  ng) [], RemoteException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+./src/app/admin/(dashboard)/
+categories/page.tsx
+4:10  Error: 'motion' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+9:29  Error: 'CardHeader' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+9:41  Error: 'CardTitle' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+10:60  Error: 
+'DialogFooter' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+26:10  Error: 'error' is 
+assigned a value but never 
+used.  @typescript-eslint/no
+-unused-vars
+
+./src/app/admin/(dashboard)/
+dashboard/page.tsx
+108:25  Warning: Using 
+`<img>` could result in 
+slower LCP and higher 
+bandwidth. Consider using 
+`<Image />` from 
+`next/image` or a custom 
+image loader to 
+automatically optimize 
+images. This may incur 
+additional usage or cost 
+from your provider. See: htt
+ps://nextjs.org/docs/message
+s/no-img-element  
+@next/next/no-img-element
+
+./src/app/admin/(dashboard)/
+layout.tsx
+21:10  Error: 'Logo' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+40:6  Warning: React Hook 
+useEffect has a missing 
+dependency: 'checkAuth'. 
+Either include it or remove 
+the dependency array.  
+react-hooks/exhaustive-deps
+
+./src/app/admin/(dashboard)/
+products/page.tsx
+9:41  Error: 'CardTitle' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+212:14  Error: 'err' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+252:14  Error: 'err' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+276:19  Error: Unexpected 
+any. Specify a different 
+type.  @typescript-eslint/no
+-explicit-any
+365:33  Warning: Using 
+`<img>` could result in 
+slower LCP and higher 
+bandwidth. Consider using 
+`<Image />` from 
+`next/image` or a custom 
+image loader to 
+automatically optimize 
+images. This may incur 
+additional usage or cost 
+from your provider. See: htt
+ps://nextjs.org/docs/message
+s/no-img-element  
+@next/next/no-img-element
+536:31  Error: 'e' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+568:27  Warning: Using 
+`<img>` could result in 
+slower LCP and higher 
+bandwidth. Consider using 
+`<Image />` from 
+`next/image` or a custom 
+image loader to 
+automatically optimize 
+images. This may incur 
+additional usage or cost 
+from your provider. See: htt
+ps://nextjs.org/docs/message
+s/no-img-element  
+@next/next/no-img-element
+
+./src/app/admin/(dashboard)/
+shop-info/page.tsx
+9:55  Error: 'Sparkles' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+14:10  Error: 'cn' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+229:27  Warning: Using 
+`<img>` could result in 
+slower LCP and higher 
+bandwidth. Consider using 
+`<Image />` from 
+`next/image` or a custom 
+image loader to 
+automatically optimize 
+images. This may incur 
+additional usage or cost 
+from your provider. See: htt
+ps://nextjs.org/docs/message
+s/no-img-element  
+@next/next/no-img-element
+259:27  Warning: Using 
+`<img>` could result in 
+slower LCP and higher 
+bandwidth. Consider using 
+`<Image />` from 
+`next/image` or a custom 
+image loader to 
+automatically optimize 
+images. This may incur 
+additional usage or cost 
+from your provider. See: htt
+ps://nextjs.org/docs/message
+s/no-img-element  
+@next/next/no-img-element
+
+./src/app/admin/login/page.t
+sx
+10:10  Error: 'Logo' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+
+./src/app/api/migrate/route.
+ts
+5:28  Error: 'req' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+
+./src/app/api/products/impor
+t/route.ts
+15:15  Error: Unexpected 
+any. Specify a different 
+type.  @typescript-eslint/no
+-explicit-any
+44:45  Error: Unexpected 
+any. Specify a different 
+type.  @typescript-eslint/no
+-explicit-any
+73:34  Error: Unexpected 
+any. Specify a different 
+type.  @typescript-eslint/no
+-explicit-any
+
+./src/app/api/products/route
+.ts
+71:38  Error: Unexpected 
+any. Specify a different 
+type.  @typescript-eslint/no
+-explicit-any
+
+./src/app/api/products/[id]/
+route.ts
+43:38  Error: Unexpected 
+any. Specify a different 
+type.  @typescript-eslint/no
+-explicit-any
+
+./src/app/api/reviews/route.
+ts
+94:34  Error: Unexpected 
+any. Specify a different 
+type.  @typescript-eslint/no
+-explicit-any
+
+./src/app/api/upload/route.t
+s
+17:17  Error: 'data' is 
+assigned a value but never 
+used.  @typescript-eslint/no
+-unused-vars
+
+./src/app/contact/page.tsx
+107:39  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+123:77  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+170:96  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+
+./src/app/login/page.tsx
+34:21  Error: Unexpected 
+any. Specify a different 
+type.  @typescript-eslint/no
+-explicit-any
+50:21  Error: Unexpected 
+any. Specify a different 
+type.  @typescript-eslint/no
+-explicit-any
+
+./src/app/page.tsx
+38:20  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+42:22  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+50:66  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+
+./src/app/products/page.tsx
+12:18  Error: 'Filter' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+12:26  Error: 'X' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+22:10  Error: 'filtersOpen' 
+is assigned a value but 
+never used.  @typescript-esl
+int/no-unused-vars
+37:6  Warning: React Hook 
+useEffect has a missing 
+dependency: 
+'fetchProducts'. Either 
+include it or remove the 
+dependency array.  
+react-hooks/exhaustive-deps
+
+./src/app/products/[id]/page
+.tsx
+4:24  Error: 'Share2' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+
+./src/app/signup/page.tsx
+39:21  Error: Unexpected 
+any. Specify a different 
+type.  @typescript-eslint/no
+-explicit-any
+
+./src/components/category-na
+v.tsx
+72:27  Warning: Using 
+`<img>` could result in 
+slower LCP and higher 
+bandwidth. Consider using 
+`<Image />` from 
+`next/image` or a custom 
+image loader to 
+automatically optimize 
+images. This may incur 
+additional usage or cost 
+from your provider. See: htt
+ps://nextjs.org/docs/message
+s/no-img-element  
+@next/next/no-img-element
+
+./src/components/ErrorReport
+er.tsx
+11:48  Error: 'reset' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+71:7  Error: Expected an 
+assignment or function call 
+and instead saw an 
+expression.  @typescript-esl
+int/no-unused-expressions
+
+./src/components/layout.tsx
+28:9  Error: 
+'isProductsPage' is 
+assigned a value but never 
+used.  @typescript-eslint/no
+-unused-vars
+
+./src/components/pdp/EMIModa
+l.tsx
+67:118  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+
+./src/components/pdp/ImageGa
+llery.tsx
+42:25  Warning: Using 
+`<img>` could result in 
+slower LCP and higher 
+bandwidth. Consider using 
+`<Image />` from 
+`next/image` or a custom 
+image loader to 
+automatically optimize 
+images. This may incur 
+additional usage or cost 
+from your provider. See: htt
+ps://nextjs.org/docs/message
+s/no-img-element  
+@next/next/no-img-element
+135:25  Warning: Using 
+`<img>` could result in 
+slower LCP and higher 
+bandwidth. Consider using 
+`<Image />` from 
+`next/image` or a custom 
+image loader to 
+automatically optimize 
+images. This may incur 
+additional usage or cost 
+from your provider. See: htt
+ps://nextjs.org/docs/message
+s/no-img-element  
+@next/next/no-img-element
+
+./src/components/pdp/Pincode
+Checker.tsx
+7:10  Error: 'cn' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+
+./src/components/pdp/Product
+Info.tsx
+12:14  Error: Unexpected 
+any. Specify a different 
+type.  @typescript-eslint/no
+-explicit-any
+
+./src/components/pdp/Recentl
+yViewed.tsx
+7:10  Error: 'Star' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+8:10  Error: 'Button' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+38:15  Error: 
+'fetchedProducts' is 
+assigned a value but never 
+used.  @typescript-eslint/no
+-unused-vars
+
+./src/components/pdp/StickyC
+TA.tsx
+82:37  Warning: Using 
+`<img>` could result in 
+slower LCP and higher 
+bandwidth. Consider using 
+`<Image />` from 
+`next/image` or a custom 
+image loader to 
+automatically optimize 
+images. This may incur 
+additional usage or cost 
+from your provider. See: htt
+ps://nextjs.org/docs/message
+s/no-img-element  
+@next/next/no-img-element
+
+./src/components/splash-scre
+en.tsx
+9:10  Error: 'mounted' is 
+assigned a value but never 
+used.  @typescript-eslint/no
+-unused-vars
+
+./src/components/ui/logo.tsx
+21:3  Error: 'variant' is 
+assigned a value but never 
+used.  @typescript-eslint/no
+-unused-vars
+
+./src/hooks/use-recently-vie
+wed.ts
+4:15  Error: 'Product' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+
+./src/visual-edits/component
+-tagger-loader.js
+5:18  Error: A `require()` 
+style import is forbidden.  
+@typescript-eslint/no-requir
+e-imports
+6:24  Error: A `require()` 
+style import is forbidden.  
+@typescript-eslint/no-requir
+e-imports
+7:25  Error: A `require()` 
+style import is forbidden.  
+@typescript-eslint/no-requir
+e-imports
+8:14  Error: A `require()` 
+style import is forbidden.  
+@typescript-eslint/no-requir
+e-imports
+430:17  Error: Expected an 
+assignment or function call 
+and instead saw an 
+expression.  @typescript-esl
+int/no-unused-expressions
+
+./src/visual-edits/VisualEdi
+tsMessenger.tsx
+509:6  Warning: React Hook 
+useEffect has a missing 
+dependency: 
+'isVisualEditMode'. Either 
+include it or remove the 
+dependency array.  
+react-hooks/exhaustive-deps
+954:6  Warning: React Hook 
+useEffect has missing 
+dependencies: 
+'handleStyleChange' and 
+'updateFocusBox'. Either 
+include them or remove the 
+dependency array.  
+react-hooks/exhaustive-deps
+1291:6  Warning: React Hook 
+useEffect has a missing 
+dependency: 
+'cleanupEditingElement'. 
+Either include it or remove 
+the dependency array.  
+react-hooks/exhaustive-deps
+1332:6  Warning: React Hook 
+useEffect has a missing 
+dependency: 
+'updateFocusBox'. Either 
+include it or remove the 
+dependency array.  
+react-hooks/exhaustive-deps
+2008:6  Warning: React Hook 
+useEffect has missing 
+dependencies: 
+'cleanupEditingElement' and 
+'isScrolling'. Either 
+include them or remove the 
+dependency array.  
+react-hooks/exhaustive-deps
+
+info  - Need to disable 
+some ESLint rules? Learn 
+more here: https://nextjs.or
+g/docs/app/api-reference/con
+fig/eslint#disabling-rules

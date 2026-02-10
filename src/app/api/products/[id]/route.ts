@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
+import { verifyToken } from '@/lib/auth'
 
 export async function GET(
   req: NextRequest,
@@ -28,6 +29,13 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const token = req.cookies.get('admin_token')?.value
+    const verifiedUser = token ? await verifyToken(token) : null
+
+    if (!verifiedUser) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
     const { id } = await params
     const body = await req.json()
 
@@ -105,6 +113,13 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const token = req.cookies.get('admin_token')?.value
+    const verifiedUser = token ? await verifyToken(token) : null
+
+    if (!verifiedUser) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
     const { id } = await params
     const { error } = await supabaseAdmin
       .from('products')

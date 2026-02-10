@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Star, ChevronRight, ShoppingCart } from 'lucide-react'
-import { Button } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { useRecentlyViewed } from '@/hooks/use-recently-viewed'
 import { useCart } from '@/hooks/use-cart'
 import { toast } from 'sonner'
@@ -36,7 +36,7 @@ export function RecentlyViewed({ currentId }: RecentlyViewedProps) {
     async function fetchProducts() {
       try {
         const fetchedProducts: Product[] = []
-        
+
         const promises = viewedIds.map(async (id) => {
           try {
             const res = await fetch(`/api/products/${id}`)
@@ -50,13 +50,13 @@ export function RecentlyViewed({ currentId }: RecentlyViewedProps) {
         })
 
         const results = await Promise.all(promises)
-        
+
         if (!cancelled) {
           const validProducts = results.filter((p): p is Product => p !== null)
           const orderedProducts = viewedIds
             .map(id => validProducts.find(p => p.id === id))
             .filter((p): p is Product => p !== undefined)
-          
+
           setProducts(orderedProducts)
           setLoading(false)
         }

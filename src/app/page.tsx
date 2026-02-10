@@ -35,11 +35,11 @@ export default function HomePage() {
             className="max-w-4xl space-y-1 sm:space-y-2"
           >
             <h1 className="text-white text-5xl xs:text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] font-display font-bold tracking-tight drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] leading-none">
-              Satty's
+              Satty&apos;s
             </h1>
 
             <h2 className="text-white text-xl xs:text-2xl sm:text-3xl md:text-4xl font-display font-medium tracking-wide opacity-95 drop-shadow-md">
-              Gujarat's #1
+              Gujarat&apos;s #1
             </h2>
 
             <h3 className="text-white text-sm xs:text-base sm:text-xl md:text-2xl font-display font-medium tracking-[0.1em] sm:tracking-[0.2em] uppercase py-2 sm:py-4 drop-shadow-md">
@@ -47,7 +47,7 @@ export default function HomePage() {
             </h3>
 
             <p className="text-white/90 text-sm xs:text-base sm:text-lg md:text-xl font-medium max-w-2xl mx-auto drop-shadow-sm pb-6 sm:pb-10 px-2">
-              Experience fast & easy online ordering on the Satty's app
+              Experience fast & easy online ordering on the Satty&apos;s app
             </p>
 
             <motion.div

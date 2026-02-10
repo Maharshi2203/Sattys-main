@@ -104,7 +104,7 @@ export default function ContactPage() {
                     transition={{ delay: 0.2 }}
                     className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-white/5 border border-white/10 text-[8px] sm:text-[10px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-primary mb-4 sm:mb-6"
                   >
-                    Connect with Satty's
+                    Connect with Satty&apos;s
                   </motion.div>
                   <motion.h1
                     initial={{ opacity: 0, y: 10 }}
@@ -120,7 +120,7 @@ export default function ContactPage() {
                     transition={{ delay: 0.4 }}
                     className="text-white text-sm sm:text-base md:text-lg leading-relaxed max-w-lg mx-auto opacity-80 px-2"
                   >
-                    Premium food ingredients delivery at your fingertips. We're here to help you scale your kitchen operations.
+                    Premium food ingredients delivery at your fingertips. We&apos;re here to help you scale your kitchen operations.
                   </motion.p>
                 </div>
 
@@ -167,7 +167,7 @@ export default function ContactPage() {
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4 text-[8px] sm:text-[10px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] text-white/40">
                     <span className="hover:text-primary transition-colors cursor-default">Gujarat #1</span>
                     <span className="hidden sm:block w-1.5 h-1.5 rounded-full bg-primary/40 animate-pulse" />
-                    <span className="hover:text-primary transition-colors cursor-default">Satty's India</span>
+                    <span className="hover:text-primary transition-colors cursor-default">Satty&apos;s India</span>
                     <span className="hidden sm:block w-1.5 h-1.5 rounded-full bg-primary/40 animate-pulse" />
                     <span className="hover:text-primary transition-colors cursor-default">Est. 2024</span>
                   </div>

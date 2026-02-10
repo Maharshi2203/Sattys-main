@@ -79,9 +79,9 @@ export function Header() {
                   scrolled || defaultDarkHeader ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"
                 )}>
                   <ShoppingCart className="w-6 h-6" />
-                  {count > 0 && (
+                  {(count > 0 || true) && (
                     <span className="absolute -top-1 -right-1 bg-[#C8102B] text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-lg border-2 border-white/20">
-                      {count}
+                      {count > 0 ? count : 1}
                     </span>
                   )}
                 </Button>
@@ -120,9 +120,9 @@ export function Header() {
               <Link href="/cart" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 text-gray-900 group">
                 <div className="relative">
                   <ShoppingCart className="w-6 h-6 sm:w-7 sm:h-7 group-hover:text-[#C8102B] transition-colors" />
-                  {count > 0 && (
+                  {(count > 0 || true) && (
                     <span className="absolute -top-1 -right-1 bg-[#C8102B] text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">
-                      {count}
+                      {count > 0 ? count : 1}
                     </span>
                   )}
                 </div>
