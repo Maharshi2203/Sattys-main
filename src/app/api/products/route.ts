@@ -21,18 +21,17 @@ export async function GET(req: NextRequest) {
     if (search) {
       filters.push(or(
         ilike(products.name, `%${search}%`),
-        ilike(products.description, `%${search}%`),
-        ilike(products.category, `%${search}%`)
+        ilike(products.description, `%${search}%`)
       ));
     }
     if (category) {
-      filters.push(eq(products.category, category));
+      filters.push(eq(products.category_id, parseInt(category)));
     }
     if (minPrice) {
-      filters.push(gte(products.price, minPrice)); // Decimal comparison works with string
+      filters.push(gte(products.final_price, minPrice)); // Decimal comparison works with string
     }
     if (maxPrice) {
-      filters.push(lte(products.price, maxPrice));
+      filters.push(lte(products.final_price, maxPrice));
     }
 
     // Execute query with pagination

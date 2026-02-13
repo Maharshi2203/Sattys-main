@@ -148,7 +148,8 @@ export default function ProductsPage() {
     try {
       const res = await fetch('/api/products')
       const data = await res.json()
-      setProducts(data)
+      // Support both array (legacy) and paginated response (new)
+      setProducts(Array.isArray(data) ? data : (data.data || []))
     } catch (err) {
       console.error('Failed to fetch products:', err)
       toast.error('Failed to load products')
@@ -204,7 +205,8 @@ export default function ProductsPage() {
   const confirmDelete = async () => {
     if (!selectedProduct) return
     try {
-      const res = await fetch(`/api/products/${selectedProduct.id}`, { method: 'DELETE' })
+      // Use Admin API for DELETE
+      const res = await fetch(`/api/admin/products/${selectedProduct.id}`, { method: 'DELETE' })
       if (!res.ok) throw new Error('Delete failed')
       setProducts(products.filter(p => p.id !== selectedProduct.id))
       setDeleteDialogOpen(false)
@@ -231,7 +233,8 @@ export default function ProductsPage() {
     }
 
     try {
-      const url = selectedProduct ? `/api/products/${selectedProduct.id}` : '/api/products'
+      // Use Admin API for POST/PUT
+      const url = selectedProduct ? `/api/admin/products/${selectedProduct.id}` : '/api/admin/products'
       const method = selectedProduct ? 'PUT' : 'POST'
       const res = await fetch(url, {
         method,
