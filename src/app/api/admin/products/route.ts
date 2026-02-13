@@ -47,6 +47,9 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ error: 'Name and Base Price are required' }, { status: 400 });
         }
 
+        // Log the received data for debugging
+        console.log('Received product data:', JSON.stringify(formData, null, 2));
+
         const newProduct = {
             name,
             description,
@@ -59,7 +62,7 @@ export async function POST(req: NextRequest) {
             shelf_life,
             base_price: String(base_price),
             gst_percentage: String(gst_percentage || 0),
-            final_price: String(final_price || base_price), // Calculation should ideally happen here too for safety
+            final_price: String(final_price || base_price),
             image_url: image_url || (images && images.length > 0 ? images[0] : ''),
             images: images || [],
             stock_status: stock_status || 'IN',
@@ -67,12 +70,23 @@ export async function POST(req: NextRequest) {
             isActive: true, // Default
         };
 
+        console.log('Attempting to insert product:', newProduct);
+
         const result = await db.insert(products).values(newProduct).returning();
+
+        console.log('Product inserted successfully:', result[0]);
 
         return NextResponse.json(result[0], { status: 201 });
 
-    } catch (error) {
+    } catch (error: any) {
         console.error('Error creating product:', error);
-        return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+        // Log the full error object if available
+        if (error.message) console.error('Error message:', error.message);
+        if (error.stack) console.error('Error stack:', error.stack);
+
+        return NextResponse.json({
+            error: 'Internal Server Error',
+            details: error.message || 'Unknown error'
+        }, { status: 500 });
     }
 }

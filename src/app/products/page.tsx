@@ -57,11 +57,14 @@ function ProductsContent() {
       if (searchParams.get('maxPrice')) params.set('maxPrice', searchParams.get('maxPrice')!)
 
       const res = await fetch(`/api/products?${params.toString()}`)
-      const data = await res.json()
-      setProducts(data)
+      const result = await res.json()
 
-      if (data.length > 0) {
-        const max = Math.max(...data.map((p: Product) => Number(p.final_price)))
+      // Handle both array and paginated response
+      const productList = Array.isArray(result) ? result : (result.data || [])
+      setProducts(productList)
+
+      if (productList.length > 0) {
+        const max = Math.max(...productList.map((p: Product) => Number(p.final_price)))
         const calculatedMax = Math.ceil(max / 500) * 500 || 5000
         setMaxPrice(calculatedMax)
         if (!searchParams.get('maxPrice')) {
@@ -248,8 +251,8 @@ function ProductsContent() {
                       size="icon"
                       onClick={() => setViewMode('grid')}
                       className={`h-8 w-8 sm:h-10 sm:w-10 rounded-lg sm:rounded-xl transition-all duration-200 ${viewMode === 'grid'
-                          ? 'bg-white shadow-sm text-primary'
-                          : 'text-black/30 hover:text-black hover:bg-white/50'
+                        ? 'bg-white shadow-sm text-primary'
+                        : 'text-black/30 hover:text-black hover:bg-white/50'
                         }`}
                     >
                       <LayoutGrid className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -259,8 +262,8 @@ function ProductsContent() {
                       size="icon"
                       onClick={() => setViewMode('list')}
                       className={`h-8 w-8 sm:h-10 sm:w-10 rounded-lg sm:rounded-xl transition-all duration-200 ${viewMode === 'list'
-                          ? 'bg-white shadow-sm text-primary'
-                          : 'text-black/30 hover:text-black hover:bg-white/50'
+                        ? 'bg-white shadow-sm text-primary'
+                        : 'text-black/30 hover:text-black hover:bg-white/50'
                         }`}
                     >
                       <List className="w-3.5 h-3.5 sm:w-4 sm:h-4" />

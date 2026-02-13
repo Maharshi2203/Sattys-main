@@ -3,11 +3,11 @@ import Link from 'next/link'
 import { Header } from '@/components/layout'
 import { ChevronRight, Share2 } from 'lucide-react'
 import type { Product } from '@/lib/types'
-import { supabaseAdmin } from '@/lib/supabase'
-
+import { db } from '@/lib/db'
+import { products } from '@/db/schema'
+import { eq } from 'drizzle-orm'
 import { ImageGallery } from '@/components/pdp/ImageGallery'
 import { ProductInfo } from '@/components/pdp/ProductInfo'
-
 import { RecentlyViewed } from '@/components/pdp/RecentlyViewed'
 import { RecentlyViewedTracker } from '@/components/pdp/RecentlyViewedTracker'
 import { StickyCTA } from '@/components/pdp/StickyCTA'
@@ -16,15 +16,19 @@ import { CategoryNav } from '@/components/category-nav'
 
 async function getProduct(id: string): Promise<Product | null> {
   try {
-    const { data, error } = await supabaseAdmin
-      .from('products')
-      .select('*, category:categories(*)')
-      .eq('id', parseInt(id))
-      .single()
+    if (!id || isNaN(Number(id))) return null
 
-    if (error || !data) return null
-    return data as Product
-  } catch { return null }
+    // Use Drizzle ORM instead of Supabase client
+    const result = await db.select().from(products).where(eq(products.id, parseInt(id))).limit(1)
+
+    if (result.length === 0) return null
+
+    // Type casting might be needed if Product type has differences from schema inferred type
+    return result[0] as unknown as Product
+  } catch (error) {
+    console.error('Error fetching product:', error)
+    return null
+  }
 }
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
