@@ -32,11 +32,18 @@ export default function CategoriesPage() {
   const fetchCategories = async () => {
     try {
       const res = await fetch('/api/categories')
+      if (!res.ok) throw new Error('Failed to fetch categories')
       const data = await res.json()
-      setCategories(data)
+      if (Array.isArray(data)) {
+        setCategories(data)
+      } else {
+        console.error('Categories data is not an array:', data)
+        setCategories([])
+      }
     } catch (err) {
       console.error('Failed to fetch categories:', err)
       toast.error('Failed to load categories')
+      setCategories([])
     } finally {
       setLoading(false)
     }
@@ -51,10 +58,10 @@ export default function CategoriesPage() {
 
   const handleEdit = (category: Category) => {
     setSelectedCategory(category)
-    setFormData({ 
-      name: category.name, 
-      description: category.description || '', 
-      parent_id: category.parent_id?.toString() || 'null' 
+    setFormData({
+      name: category.name,
+      description: category.description || '',
+      parent_id: category.parent_id?.toString() || 'null'
     })
     setError('')
     setDialogOpen(true)
@@ -87,7 +94,7 @@ export default function CategoriesPage() {
     e.preventDefault()
     setSaving(true)
     setError('')
-    
+
     const payload = {
       ...formData,
       parent_id: formData.parent_id === 'null' ? null : parseInt(formData.parent_id)
@@ -204,18 +211,18 @@ export default function CategoriesPage() {
                       </TableCell>
                       <TableCell className="py-6 px-8 text-right">
                         <div className="flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                          <Button 
-                            variant="ghost" 
-                            size="icon" 
+                          <Button
+                            variant="ghost"
+                            size="icon"
                             onClick={() => handleEdit(category)}
                             className="h-10 w-10 rounded-xl hover:bg-primary hover:text-white transition-all"
                           >
                             <Pencil className="w-4 h-4" />
                           </Button>
-                          <Button 
-                            variant="ghost" 
-                            size="icon" 
-                            onClick={() => handleDelete(category)} 
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => handleDelete(category)}
                             className="h-10 w-10 rounded-xl hover:bg-destructive hover:text-white transition-all text-destructive"
                           >
                             <Trash2 className="w-4 h-4" />
@@ -242,15 +249,15 @@ export default function CategoriesPage() {
           <form onSubmit={handleSubmit} className="p-8 space-y-6">
             <div className="space-y-2">
               <Label className="text-xs uppercase tracking-widest font-bold opacity-50">Display Name *</Label>
-              <Input 
-                value={formData.name} 
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })} 
+              <Input
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 className="h-12 bg-muted/50 border-border rounded-xl focus:ring-primary font-bold"
                 placeholder="e.g. Electronics, Luxury Goods"
-                required 
+                required
               />
             </div>
-            
+
             <div className="space-y-2">
               <Label className="text-xs uppercase tracking-widest font-bold opacity-50">Parent Category</Label>
               <Select value={formData.parent_id} onValueChange={(value) => setFormData({ ...formData, parent_id: value })}>
@@ -271,15 +278,15 @@ export default function CategoriesPage() {
 
             <div className="space-y-2">
               <Label className="text-xs uppercase tracking-widest font-bold opacity-50">Description</Label>
-              <Textarea 
-                value={formData.description} 
-                onChange={(e) => setFormData({ ...formData, description: e.target.value })} 
+              <Textarea
+                value={formData.description}
+                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                 className="bg-muted/50 border-border rounded-xl focus:ring-primary min-h-[100px]"
                 placeholder="Describe the purpose of this collection..."
-                rows={4} 
+                rows={4}
               />
             </div>
-            
+
             <div className="pt-4 flex gap-4">
               <Button type="button" variant="ghost" onClick={() => setDialogOpen(false)} className="flex-1 rounded-xl h-12 font-bold">Cancel</Button>
               <Button type="submit" className="flex-1 bg-primary hover:bg-primary/90 rounded-xl h-12 font-bold shadow-lg shadow-primary/20" disabled={saving}>
@@ -298,14 +305,14 @@ export default function CategoriesPage() {
             </div>
             <AlertDialogTitle className="text-2xl font-display font-bold">Remove Hierarchy?</AlertDialogTitle>
             <AlertDialogDescription className="text-base leading-relaxed">
-              Are you sure you want to delete <span className="font-bold text-foreground">&quot;{selectedCategory?.name}&quot;</span>? This action cannot be undone. 
+              Are you sure you want to delete <span className="font-bold text-foreground">&quot;{selectedCategory?.name}&quot;</span>? This action cannot be undone.
               Categories with existing products or sub-categories cannot be removed for data integrity.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter className="mt-8 gap-4 sm:gap-0">
             <AlertDialogCancel className="rounded-xl h-12 font-bold border-border">Discard</AlertDialogCancel>
-            <AlertDialogAction 
-              onClick={confirmDelete} 
+            <AlertDialogAction
+              onClick={confirmDelete}
               className="bg-destructive text-white hover:bg-destructive/90 rounded-xl h-12 font-bold px-8 shadow-lg shadow-destructive/20"
             >
               Delete Permanently

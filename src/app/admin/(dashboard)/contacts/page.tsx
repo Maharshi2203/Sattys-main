@@ -21,10 +21,17 @@ export default function ContactsPage() {
   const fetchMessages = async () => {
     try {
       const res = await fetch('/api/contacts')
+      if (!res.ok) throw new Error('Failed to fetch messages')
       const data = await res.json()
-      setMessages(data)
+      if (Array.isArray(data)) {
+        setMessages(data)
+      } else {
+        console.error('Messages data is not an array:', data)
+        setMessages([])
+      }
     } catch (err) {
       console.error('Failed to fetch messages:', err)
+      setMessages([])
     } finally {
       setLoading(false)
     }
@@ -78,8 +85,8 @@ export default function ContactsPage() {
       ) : (
         <div className="space-y-4">
           {messages.map((message) => (
-            <Card 
-              key={message.id} 
+            <Card
+              key={message.id}
               className={`border-0 shadow-sm cursor-pointer transition-all hover:shadow-md ${!message.is_read ? 'bg-[#0d4f3c]/5' : ''}`}
               onClick={() => markAsRead(message)}
             >
@@ -104,9 +111,9 @@ export default function ContactsPage() {
                       {new Date(message.created_at).toLocaleString()}
                     </div>
                   </div>
-                  <Button 
-                    variant="ghost" 
-                    size="icon" 
+                  <Button
+                    variant="ghost"
+                    size="icon"
                     onClick={(e) => { e.stopPropagation(); handleDelete(message); }}
                     className="text-destructive flex-shrink-0"
                   >

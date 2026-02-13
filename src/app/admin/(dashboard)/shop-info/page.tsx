@@ -36,6 +36,7 @@ export default function ShopInfoPage() {
   const fetchShopInfo = async () => {
     try {
       const res = await fetch('/api/shop-info')
+      if (!res.ok) throw new Error('Failed to fetch shop info')
       const data = await res.json()
       if (data && Object.keys(data).length > 0) {
         setShopInfo(data)

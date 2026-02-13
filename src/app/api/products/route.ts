@@ -4,6 +4,8 @@ import { products } from '@/db/schema';
 import { eq, ilike, gte, lte, and, sql, desc, or } from 'drizzle-orm';
 import { boolean } from 'drizzle-orm/pg-core';
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);

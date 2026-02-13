@@ -1,19 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET() {
   try {
     const { data, error } = await supabaseAdmin
       .from('categories')
-      .select('*, products(id, name, final_price, image_url, stock_status)')
+      .select('*')
       .order('name')
 
     if (error) {
+      console.error('Supabase Error fetching categories:', error)
       return NextResponse.json({ error: error.message }, { status: 500 })
     }
 
     return NextResponse.json(data)
-  } catch {
+  } catch (error) {
+    console.error('Server Error fetching categories:', error)
     return NextResponse.json({ error: 'Server error' }, { status: 500 })
   }
 }

@@ -20,10 +20,12 @@ export default function DashboardPage() {
   const fetchStats = async () => {
     try {
       const res = await fetch('/api/dashboard')
+      if (!res.ok) throw new Error('Failed to fetch stats')
       const data = await res.json()
       setStats(data)
     } catch (err) {
       console.error('Failed to fetch stats:', err)
+      // Optional: set empty stats or handle error state
     } finally {
       setLoading(false)
     }

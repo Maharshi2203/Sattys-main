@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET() {
   try {
     const [
@@ -27,8 +29,8 @@ export async function GET() {
       recentProducts: recentProducts || [],
       unreadMessages: unreadMessages || 0
     })
-    } catch (error) {
-      console.error('Dashboard API Error:', error)
-      return NextResponse.json({ error: 'Server error', details: error instanceof Error ? error.message : String(error) }, { status: 500 })
-    }
+  } catch (error) {
+    console.error('Dashboard API Error:', error)
+    return NextResponse.json({ error: 'Server error', details: error instanceof Error ? error.message : String(error) }, { status: 500 })
+  }
 }

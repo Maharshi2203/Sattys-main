@@ -39,10 +39,17 @@ function ProductsContent() {
   const fetchCategories = async () => {
     try {
       const res = await fetch('/api/categories')
+      if (!res.ok) throw new Error('Failed to fetch categories')
       const data = await res.json()
-      setCategories(data)
+      if (Array.isArray(data)) {
+        setCategories(data)
+      } else {
+        console.error('Categories data is not an array:', data)
+        setCategories([])
+      }
     } catch (err) {
       console.error('Failed to fetch categories:', err)
+      setCategories([])
     }
   }
 
