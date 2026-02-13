@@ -265,5 +265,44 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  white-space: nowrap;
   max-width: 100%;
+}
+
+/* Hero Logo Styles */
+.hero-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.hero-logo {
+  max-width: 600px;
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+  opacity: 0;
+  /* Start hidden for animation */
+  animation: fadeIn 1.2s ease-in-out forwards;
+  filter: brightness(0) invert(1);
+}
+
+@media (max-width: 768px) {
+  .hero-logo {
+    max-width: 300px;
+    width: 90%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

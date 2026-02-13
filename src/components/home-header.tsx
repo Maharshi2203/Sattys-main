@@ -34,14 +34,14 @@ export function HomeHeader() {
       scrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-2 sm:py-4" : "bg-transparent py-4 sm:py-8"
     )}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="group flex items-center flex-shrink-0">
-              <Logo
-                className="transition-all duration-300"
-                responsive
-                height={scrolled ? 28 : undefined}
-              />
-            </Link>
+        <div className="flex items-center justify-between">
+          <Link href="/" className="group flex items-center flex-shrink-0">
+            <Logo
+              className="transition-all duration-300"
+              responsive
+              height={scrolled ? 28 : undefined}
+            />
+          </Link>
 
           <div className="flex items-center gap-4 sm:gap-8 xl:gap-10">
             <nav className="hidden md:flex items-center gap-6 lg:gap-8 xl:gap-10">

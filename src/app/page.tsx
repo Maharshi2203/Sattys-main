@@ -34,9 +34,10 @@ export default function HomePage() {
             transition={{ duration: 1, ease: "easeOut" }}
             className="max-w-4xl space-y-1 sm:space-y-2"
           >
-            <h1 className="text-white text-5xl xs:text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] font-display font-bold tracking-tight drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] leading-none">
-              Satty&apos;s
-            </h1>
+            <div className="hero-logo-container">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/sattys-logo.png" alt="Satty's Logo" className="hero-logo" />
+            </div>
 
             <h2 className="text-white text-xl xs:text-2xl sm:text-3xl md:text-4xl font-display font-medium tracking-wide opacity-95 drop-shadow-md">
               Gujarat&apos;s #1
