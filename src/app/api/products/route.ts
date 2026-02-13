@@ -1,132 +1,67 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { supabaseAdmin } from '@/lib/supabase'
-import { verifyToken } from '@/lib/auth'
+import { NextRequest, NextResponse } from 'next/server';
+import { db } from '@/lib/db'; // Ensure alias works or use relative path
+import { products } from '@/db/schema';
+import { eq, ilike, gte, lte, and, sql, desc, or } from 'drizzle-orm';
+import { boolean } from 'drizzle-orm/pg-core';
 
 export async function GET(req: NextRequest) {
   try {
-    const { searchParams } = new URL(req.url)
-    const category = searchParams.get('category')
-    const search = searchParams.get('search')
-    const stock = searchParams.get('stock')
-    const brand = searchParams.get('brand')
-    const minPrice = searchParams.get('minPrice')
-    const maxPrice = searchParams.get('maxPrice')
-    const featured = searchParams.get('featured')
-    const limit = searchParams.get('limit')
+    const { searchParams } = new URL(req.url);
+    const page = parseInt(searchParams.get('page') || '1');
+    const limit = parseInt(searchParams.get('limit') || '20');
+    const offset = (page - 1) * limit;
 
-    let query = supabaseAdmin
-      .from('products')
-      .select('*, category:categories(*)')
-      .order('created_at', { ascending: false })
+    const search = searchParams.get('search');
+    const category = searchParams.get('category');
+    const minPrice = searchParams.get('minPrice');
+    const maxPrice = searchParams.get('maxPrice');
 
-    if (category) {
-      query = query.eq('category_id', parseInt(category))
-    }
+    // Construct filters
+    const filters = [];
     if (search) {
-      query = query.or(`name.ilike.%${search}%,brand_name.ilike.%${search}%,product_code.ilike.%${search}%`)
+      filters.push(or(
+        ilike(products.name, `%${search}%`),
+        ilike(products.description, `%${search}%`),
+        ilike(products.category, `%${search}%`)
+      ));
     }
-    if (stock) {
-      query = query.eq('stock_status', stock)
-    }
-    if (brand) {
-      query = query.ilike('brand_name', `%${brand}%`)
+    if (category) {
+      filters.push(eq(products.category, category));
     }
     if (minPrice) {
-      query = query.gte('final_price', parseFloat(minPrice))
+      filters.push(gte(products.price, minPrice)); // Decimal comparison works with string
     }
     if (maxPrice) {
-      query = query.lte('final_price', parseFloat(maxPrice))
-    }
-    if (featured === 'true') {
-      query = query.eq('is_featured', true)
-    }
-    if (limit) {
-      query = query.limit(parseInt(limit))
+      filters.push(lte(products.price, maxPrice));
     }
 
-    const { data, error } = await query
+    // Execute query with pagination
+    const data = await db.select()
+      .from(products)
+      .where(and(...filters))
+      .limit(limit)
+      .offset(offset)
+      .orderBy(desc(products.createdAt));
 
-    if (error) {
-      return NextResponse.json({ error: error.message }, { status: 500 })
-    }
+    // Get total count for pagination metadata
+    const totalResult = await db.select({ count: sql<number>`count(*)` })
+      .from(products)
+      .where(and(...filters));
 
-    return NextResponse.json(data)
-  } catch {
-    return NextResponse.json({ error: 'Server error' }, { status: 500 })
-  }
-}
+    const total = Number(totalResult[0]?.count || 0);
 
-export async function POST(req: NextRequest) {
-  try {
-    const token = req.cookies.get('admin_token')?.value
-    if (!token || !verifyToken(token)) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
-
-    const body = await req.json()
-
-    // Extract images array
-    const { images, ...productData } = body
-
-    const finalPrice = productData.base_price * (1 + (productData.gst_percentage || 0) / 100)
-
-    // Use first image from images array as image_url if available
-    const imageUrl = images && images.length > 0 ? images[0] : productData.image_url
-
-    // Build insert object with core fields
-    const insertData: Record<string, any> = {
-      product_code: productData.product_code,
-      name: productData.name,
-      brand_name: productData.brand_name,
-      company_name: productData.company_name,
-      category_id: productData.category_id,
-      case_size: productData.case_size,
-      pack_size: productData.pack_size,
-      shelf_life: productData.shelf_life,
-      base_price: productData.base_price,
-      gst_percentage: productData.gst_percentage,
-      final_price: finalPrice,
-      description: productData.description,
-      image_url: imageUrl,
-      stock_status: productData.stock_status,
-      is_featured: productData.is_featured
-    }
-
-    // Try to include images if the array exists
-    if (images && Array.isArray(images)) {
-      insertData.images = images
-    }
-
-    const { data, error } = await supabaseAdmin
-      .from('products')
-      .insert(insertData)
-      .select('*, category:categories(*)')
-      .single()
-
-    if (error) {
-      console.error('Supabase insert error:', error)
-
-      // If error is about images column not existing, retry without it
-      if (error.message.includes('images')) {
-        delete insertData.images
-        const { data: retryData, error: retryError } = await supabaseAdmin
-          .from('products')
-          .insert(insertData)
-          .select('*, category:categories(*)')
-          .single()
-
-        if (retryError) {
-          return NextResponse.json({ error: retryError.message }, { status: 500 })
-        }
-        return NextResponse.json(retryData, { status: 201 })
+    return NextResponse.json({
+      data,
+      meta: {
+        total,
+        page,
+        limit,
+        totalPages: Math.ceil(total / limit)
       }
+    });
 
-      return NextResponse.json({ error: error.message }, { status: 500 })
-    }
-
-    return NextResponse.json(data, { status: 201 })
-  } catch (err) {
-    console.error('Server error:', err)
-    return NextResponse.json({ error: 'Server error' }, { status: 500 })
+  } catch (error) {
+    console.error('Database Error:', error);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
